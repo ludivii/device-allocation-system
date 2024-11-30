@@ -7,19 +7,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.luandias.device_allocation_system.dto.BusinessDTO;
-import com.luandias.device_allocation_system.servicies.BusinessService;
+import com.luandias.device_allocation_system.dto.DeviceDTO;
+import com.luandias.device_allocation_system.servicies.DeviceService;
 
 @RestController
-@RequestMapping(value = "/business")
-public class BusinessController {
-
-	@Autowired
-	private BusinessService businessService;
+@RequestMapping(value = "/device")
+public class DeviceController {
 	
+	@Autowired
+	private DeviceService deviceService;
+
 	@GetMapping
-	public List<BusinessDTO> findAll(){
-		List<BusinessDTO> result = businessService.findAll();
+	public List<DeviceDTO> findAll(){
+		List<DeviceDTO> result = deviceService.findAll();
 		return result;
 	}
 }
