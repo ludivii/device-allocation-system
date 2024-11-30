@@ -25,6 +25,7 @@ public class Client implements Serializable {
 	private String lastName;
 	private LocalDate birthDate;
 	private Character gender;
+	private String phone;
 
 	@OneToOne
 	private Address address;
@@ -33,12 +34,13 @@ public class Client implements Serializable {
 
 	}
 
-	public Client(Long id, String firstName, String lastName, LocalDate birthDate, Character gender, Address address) {
+	public Client(Long id, String firstName, String lastName, LocalDate birthDate, Character gender, String phone, Address address) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.birthDate = birthDate;
 		this.gender = gender;
+		this.phone = phone;
 		this.address = address;
 	}
 
@@ -80,6 +82,14 @@ public class Client implements Serializable {
 
 	public void setGender(Character gender) {
 		this.gender = gender;
+	}
+	
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 
 	public Address getAddress() {

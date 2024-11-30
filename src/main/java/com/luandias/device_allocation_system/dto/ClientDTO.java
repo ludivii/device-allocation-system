@@ -12,6 +12,7 @@ public class ClientDTO {
 	private String lastName;
 	private LocalDate birthDate;
 	private Character gender;
+	private String phone;
 	private Address address;
 
 	public ClientDTO() {
@@ -24,6 +25,7 @@ public class ClientDTO {
 		lastName = obj.getLastName();
 		birthDate = obj.getBirthDate();
 		gender = obj.getGender();
+		phone = obj.getPhone();
 		address = obj.getAddress();
 	}
 
@@ -65,6 +67,14 @@ public class ClientDTO {
 
 	public void setGender(Character gender) {
 		this.gender = gender;
+	}
+	
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 
 	public Address getAddress() {

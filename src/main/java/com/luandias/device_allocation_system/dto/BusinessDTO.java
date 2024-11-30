@@ -7,8 +7,8 @@ public class BusinessDTO {
 
 	private Long id;
 	private String name;
-	private Integer cnpj;
-	private Integer phone;
+	private String cnpj;
+	private String phone;
 	private String email;
 	private Address address;
 
@@ -41,19 +41,19 @@ public class BusinessDTO {
 		this.name = name;
 	}
 
-	public Integer getCnpj() {
+	public String getCnpj() {
 		return cnpj;
 	}
 
-	public void setCnpj(Integer cnpj) {
+	public void setCnpj(String cnpj) {
 		this.cnpj = cnpj;
 	}
 
-	public Integer getPhone() {
+	public String getPhone() {
 		return phone;
 	}
 
-	public void setPhone(Integer phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 

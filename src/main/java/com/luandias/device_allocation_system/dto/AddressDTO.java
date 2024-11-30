@@ -5,10 +5,10 @@ import com.luandias.device_allocation_system.entities.Address;
 public class AddressDTO {
 	private Long id;
 	private String address;
+	private String district;
 	private String state;
 	private String city;
 	private String postalCode;
-	private String phone;
 
 	public AddressDTO() {
 
@@ -17,10 +17,10 @@ public class AddressDTO {
 	public AddressDTO(Address obj) {
 		id = obj.getId();
 		address = obj.getAddress();
+		district = obj.getDistrict();
 		state = obj.getState();
 		city = obj.getCity();
 		postalCode = obj.getPostalCode();
-		phone = obj.getPhone();
 	}
 
 	public Long getId() {
@@ -37,6 +37,14 @@ public class AddressDTO {
 
 	public void setAddress(String address) {
 		this.address = address;
+	}
+	
+	public String getDistrict() {
+		return district;
+	}
+
+	public void setDistrict(String district) {
+		this.district = district;
 	}
 
 	public String getState() {
@@ -63,11 +71,4 @@ public class AddressDTO {
 		this.postalCode = postalCode;
 	}
 
-	public String getPhone() {
-		return phone;
-	}
-
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
 }

@@ -20,22 +20,24 @@ public class Address implements Serializable {
 	private Long id;
 	
 	private String address;
+	private String district;
 	private String state;
 	private String city;
 	private String postalCode;
-	private String phone;
+	
 
 	public Address() {
 
 	}
 
-	public Address(Long id, String address, String state, String city, String postalCode, String phone) {
+	public Address(Long id, String address, String district, String state, String city, String postalCode) {
 		this.id = id;
 		this.address = address;
+		this.district = district;
 		this.state = state;
 		this.city = city;
 		this.postalCode = postalCode;
-		this.phone = phone;
+		
 	}
 
 	public Long getId() {
@@ -52,6 +54,14 @@ public class Address implements Serializable {
 
 	public void setAddress(String address) {
 		this.address = address;
+	}
+	
+	public String getDistrict() {
+		return district;
+	}
+
+	public void setDistrict(String district) {
+		this.district = district;
 	}
 
 	public String getState() {
@@ -76,14 +86,6 @@ public class Address implements Serializable {
 
 	public void setPostalCode(String postalCode) {
 		this.postalCode = postalCode;
-	}
-
-	public String getPhone() {
-		return phone;
-	}
-
-	public void setPhone(String phone) {
-		this.phone = phone;
 	}
 
 	@Override

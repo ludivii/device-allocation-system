@@ -3,12 +3,11 @@ package com.luandias.device_allocation_system.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -22,18 +21,18 @@ public class Business implements Serializable {
 	private Long id;
 
 	private String name;
-	private Integer cnpj;
-	private Integer phone;
+	private String cnpj;
+	private String phone;
 	private String email;
 
-	@Autowired
+	@OneToOne
 	private Address address;
 
 	public Business() {
 
 	}
 
-	public Business(Long id, String name, Integer cnpj, Integer phone, String email, Address address) {
+	public Business(Long id, String name, String cnpj, String phone, String email, Address address) {
 		this.id = id;
 		this.name = name;
 		this.cnpj = cnpj;
@@ -58,19 +57,19 @@ public class Business implements Serializable {
 		this.name = name;
 	}
 
-	public Integer getCnpj() {
+	public String getCnpj() {
 		return cnpj;
 	}
 
-	public void setCnpj(Integer cnpj) {
+	public void setCnpj(String cnpj) {
 		this.cnpj = cnpj;
 	}
 
-	public Integer getPhone() {
+	public String getPhone() {
 		return phone;
 	}
 
-	public void setPhone(Integer phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 
