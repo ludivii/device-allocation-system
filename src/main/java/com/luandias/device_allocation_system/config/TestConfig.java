@@ -13,6 +13,7 @@ import com.luandias.device_allocation_system.entities.Business;
 import com.luandias.device_allocation_system.entities.Client;
 import com.luandias.device_allocation_system.entities.Device;
 import com.luandias.device_allocation_system.entities.Monitor;
+import com.luandias.device_allocation_system.entities.Stabilizer;
 import com.luandias.device_allocation_system.enums.Type;
 import com.luandias.device_allocation_system.repositories.AddressRepository;
 import com.luandias.device_allocation_system.repositories.AllocationRepository;
@@ -100,6 +101,15 @@ public class TestConfig implements CommandLineRunner {
 		
 		monitorRepository.saveAll(Arrays.asList(monitor1, monitor2, monitor3, monitor4, monitor5));
 		
+		stabilizerRepository.deleteAll();
+		
+		Stabilizer stabilizer1 = new Stabilizer(null, 104111, "TSShara", "Powerest", "300VA", 'S');
+		Stabilizer stabilizer2 = new Stabilizer(null, 104222, "TSShara", "Powerest", "300VA", 'S');
+		Stabilizer stabilizer3 = new Stabilizer(null, 104333, "TSShara", "Powerest", "300VA", 'S');
+		Stabilizer stabilizer4 = new Stabilizer(null, 104444, "ForceLine", "Eternity", "300VA", 'N');
+		Stabilizer stabilizer5 = new Stabilizer(null, 104555, "ForceLine", "Eternity", "300VA", 'N');
+		
+		stabilizerRepository.saveAll(Arrays.asList(stabilizer1, stabilizer2, stabilizer3, stabilizer4, stabilizer5));
 		
 	}
 

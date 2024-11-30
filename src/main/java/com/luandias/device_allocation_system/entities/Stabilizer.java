@@ -21,16 +21,20 @@ public class Stabilizer implements Serializable {
 
 	private Integer identification;
 	private String brand;
+	private String model;
+	private String voltage;
 	private Character bivolt;
 
 	public Stabilizer() {
 
 	}
 
-	public Stabilizer(Long id, Integer identification, String brand, Character bivolt) {
+	public Stabilizer(Long id, Integer identification, String brand, String model, String voltage, Character bivolt) {
 		this.id = id;
 		this.identification = identification;
 		this.brand = brand;
+		this.model = model;
+		this.voltage = voltage;
 		this.bivolt = bivolt;
 	}
 
@@ -58,6 +62,22 @@ public class Stabilizer implements Serializable {
 		this.brand = brand;
 	}
 
+	public String getModel() {
+		return model;
+	}
+
+	public void setModel(String model) {
+		this.model = model;
+	}
+	
+	public String getVoltage() {
+		return voltage;
+	}
+
+	public void setVoltage(String voltage) {
+		this.voltage = voltage;
+	}
+	
 	public Character getBivolt() {
 		return bivolt;
 	}

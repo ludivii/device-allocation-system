@@ -8,6 +8,8 @@ public class StabilizerDTO {
 
 	private Integer identification;
 	private String brand;
+	private String model;
+	private String voltage;
 	private Character bivolt;
 
 	public StabilizerDTO() {
@@ -18,6 +20,8 @@ public class StabilizerDTO {
 		id = obj.getId();
 		identification = obj.getIdentification();
 		brand = obj.getBrand();
+		model = obj.getModel();
+		voltage = obj.getVoltage();
 		bivolt = obj.getBivolt();
 	}
 
@@ -43,6 +47,22 @@ public class StabilizerDTO {
 
 	public void setBrand(String brand) {
 		this.brand = brand;
+	}
+	
+	public String getModel() {
+		return model;
+	}
+
+	public void setModel(String model) {
+		this.model = model;
+	}
+	
+	public String getVoltage() {
+		return voltage;
+	}
+
+	public void setVoltage(String voltage) {
+		this.voltage = voltage;
 	}
 
 	public Character getBivolt() {
