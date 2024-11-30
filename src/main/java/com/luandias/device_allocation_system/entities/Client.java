@@ -4,12 +4,11 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -27,7 +26,7 @@ public class Client implements Serializable {
 	private LocalDate birthDate;
 	private Character gender;
 
-	@Autowired
+	@OneToOne
 	private Address address;
 
 	public Client() {

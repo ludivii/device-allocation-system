@@ -1,5 +1,6 @@
 package com.luandias.device_allocation_system.config;
 
+import java.time.LocalDate;
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
 import com.luandias.device_allocation_system.entities.Address;
+import com.luandias.device_allocation_system.entities.Client;
 import com.luandias.device_allocation_system.repositories.AddressRepository;
 import com.luandias.device_allocation_system.repositories.AllocationRepository;
 import com.luandias.device_allocation_system.repositories.BusinessRepository;
@@ -54,7 +56,15 @@ public class TestConfig implements CommandLineRunner {
 		
 		addressRepository.saveAll(Arrays.asList(address1, address2, address3, address4, address5, address6, address7, address8, address9, address10));
 
+		clientRepository.deleteAll();
 		
+		Client client1 = new Client(null, "Luan", "Vinhático", LocalDate.of(2002, 2, 17), 'M', address1);
+		Client client2 = new Client(null, "Pedro", "Santos", LocalDate.of(1998, 8, 20), 'M', address2);
+		Client client3 = new Client(null, "Italo", "Menezes", LocalDate.of(1988, 10, 01), 'M', address3);
+		Client client4 = new Client(null, "Levi", "Araujo", LocalDate.of(1994, 5, 04), 'M', address4);
+		Client client5 = new Client(null, "Jorge", "Passos", LocalDate.of(1982, 2, 21), 'M', address5);
+		
+		clientRepository.saveAll(Arrays.asList(client1, client2, client3, client4, client5));
 		
 		
 	}
