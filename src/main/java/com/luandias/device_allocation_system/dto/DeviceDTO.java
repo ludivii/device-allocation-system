@@ -10,6 +10,7 @@ public class DeviceDTO {
 	private Integer identification;
 	private Type type;
 	private String brand;
+	private String model;
 	private String size;
 	private String cpu;
 	private String ram;
@@ -25,6 +26,7 @@ public class DeviceDTO {
 		identification = obj.getIdentification();
 		type = obj.getType();
 		brand = obj.getBrand();
+		model = obj.getModel();
 		size = obj.getSize();
 		cpu = obj.getCpu();
 		ram = obj.getRam();
@@ -64,6 +66,14 @@ public class DeviceDTO {
 		this.brand = brand;
 	}
 
+	public String getModel() {
+		return model;
+	}
+
+	public void setModel(String model) {
+		this.model = model;
+	}
+	
 	public String getSize() {
 		return size;
 	}

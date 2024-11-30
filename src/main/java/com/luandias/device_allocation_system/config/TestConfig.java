@@ -11,6 +11,8 @@ import org.springframework.context.annotation.Profile;
 import com.luandias.device_allocation_system.entities.Address;
 import com.luandias.device_allocation_system.entities.Business;
 import com.luandias.device_allocation_system.entities.Client;
+import com.luandias.device_allocation_system.entities.Device;
+import com.luandias.device_allocation_system.enums.Type;
 import com.luandias.device_allocation_system.repositories.AddressRepository;
 import com.luandias.device_allocation_system.repositories.AllocationRepository;
 import com.luandias.device_allocation_system.repositories.BusinessRepository;
@@ -76,6 +78,16 @@ public class TestConfig implements CommandLineRunner {
 		Business business5 = new Business(null, "CarDealership", "06.140.899/0001-24", "+55 (51) 3067-6227", "cardealership@test.com.br", address10);
 		
 		businessRepository.saveAll(Arrays.asList(business1, business2, business3, business4, business5));
+		
+		deviceRepository.deleteAll();
+		
+		Device device1 = new Device(null, 102111, Type.COMPUTER, "", "", "Tower", "Intel I3-3220", "Kingston 8GB DDR3 1600", "Patriot 120GB", "Intel® HD Graphics 2500");
+		Device device2 = new Device(null, 102222, Type.NOTEBOOK, "DELL", "Latitude 5480", "14 polegadas", "Intel I5-7200U", "Adata 8GB DDR4 2666", "Patriot 240GB", "Intel HD Graphics 620");
+		Device device3 = new Device(null, 102333, Type.COMPUTER, "", "", "Tower", "Intel I3-3220", "Kingston 8GB DDR3 1600", "Patriot 120GB", "Intel® HD Graphics 2500");
+		Device device4 = new Device(null, 102444, Type.NOTEBOOK, "DELL", "Inspiron 15", "15.6 polegadas", "Intel I3-1215U", "Adata 16GB DDR4 3200", "NVME Kingston 512GB", "Intel UHD Graphics for 12th Gen Intel Processors");
+		Device device5 = new Device(null, 102555, Type.NOTEBOOK, "Lenovo", "Thinkpad E14", "14 polegadas", "Intel I5-10210U", "Adata 8GB DDR4 2666", "Patriot 240GB", "Intel® UHD Graphics for 10th Gen Intel® Processors");
+		
+		deviceRepository.saveAll(Arrays.asList(device1, device2, device3, device4, device5));
 		
 		
 	}

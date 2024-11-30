@@ -24,6 +24,7 @@ public class Device implements Serializable {
 	private Integer identification;
 	private Type type;
 	private String brand;
+	private String model;
 	private String size;
 	private String cpu;
 	private String ram;
@@ -34,12 +35,13 @@ public class Device implements Serializable {
 
 	}
 
-	public Device(Long id, Integer identification, Type type, String brand, String size, String cpu, String ram,
+	public Device(Long id, Integer identification, Type type, String brand, String model, String size, String cpu, String ram,
 			String ssd, String gpu) {
 		this.id = id;
 		this.identification = identification;
 		this.type = type;
 		this.brand = brand;
+		this.model = model;
 		this.size = size;
 		this.cpu = cpu;
 		this.ram = ram;
@@ -77,6 +79,14 @@ public class Device implements Serializable {
 
 	public void setBrand(String brand) {
 		this.brand = brand;
+	}
+	
+	public String getModel() {
+		return model;
+	}
+
+	public void setModel(String model) {
+		this.model = model;
 	}
 
 	public String getSize() {
