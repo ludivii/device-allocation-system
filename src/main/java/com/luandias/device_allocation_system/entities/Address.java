@@ -22,14 +22,14 @@ public class Address implements Serializable {
 	private String address;
 	private String state;
 	private String city;
-	private Integer postalCode;
-	private Integer phone;
+	private String postalCode;
+	private String phone;
 
 	public Address() {
 
 	}
 
-	public Address(Long id, String address, String state, String city, Integer postalCode, Integer phone) {
+	public Address(Long id, String address, String state, String city, String postalCode, String phone) {
 		this.id = id;
 		this.address = address;
 		this.state = state;
@@ -70,19 +70,19 @@ public class Address implements Serializable {
 		this.city = city;
 	}
 
-	public Integer getPostalCode() {
+	public String getPostalCode() {
 		return postalCode;
 	}
 
-	public void setPostalCode(Integer postalCode) {
+	public void setPostalCode(String postalCode) {
 		this.postalCode = postalCode;
 	}
 
-	public Integer getPhone() {
+	public String getPhone() {
 		return phone;
 	}
 
-	public void setPhone(Integer phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 

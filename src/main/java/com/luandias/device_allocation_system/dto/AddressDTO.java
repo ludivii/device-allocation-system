@@ -7,8 +7,8 @@ public class AddressDTO {
 	private String address;
 	private String state;
 	private String city;
-	private Integer postalCode;
-	private Integer phone;
+	private String postalCode;
+	private String phone;
 
 	public AddressDTO() {
 
@@ -55,19 +55,19 @@ public class AddressDTO {
 		this.city = city;
 	}
 
-	public Integer getPostalCode() {
+	public String getPostalCode() {
 		return postalCode;
 	}
 
-	public void setPostalCode(Integer postalCode) {
+	public void setPostalCode(String postalCode) {
 		this.postalCode = postalCode;
 	}
 
-	public Integer getPhone() {
+	public String getPhone() {
 		return phone;
 	}
 
-	public void setPhone(Integer phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 }
