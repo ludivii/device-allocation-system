@@ -8,6 +8,7 @@ public class MonitorDTO {
 
 	private Integer identification;
 	private String brand;
+	private String model;
 	private String size;
 	private String resolution;
 
@@ -19,6 +20,7 @@ public class MonitorDTO {
 		id = obj.getId();
 		identification = obj.getIdentification();
 		brand = obj.getBrand();
+		model = obj.getModel();
 		size = obj.getSize();
 		resolution = obj.getResolution();
 	}
@@ -45,6 +47,14 @@ public class MonitorDTO {
 
 	public void setBrand(String brand) {
 		this.brand = brand;
+	}
+	
+	public String getModel() {
+		return model;
+	}
+
+	public void setModel(String model) {
+		this.model = model;
 	}
 
 	public String getSize() {

@@ -21,6 +21,7 @@ public class Monitor implements Serializable {
 
 	private Integer identification;
 	private String brand;
+	private String model;
 	private String size;
 	private String resolution;
 
@@ -28,10 +29,11 @@ public class Monitor implements Serializable {
 
 	}
 
-	public Monitor(Long id, Integer identification, String brand, String size, String resolution) {
+	public Monitor(Long id, Integer identification, String brand, String model, String size, String resolution) {
 		this.id = id;
 		this.identification = identification;
 		this.brand = brand;
+		this.model = model;
 		this.size = size;
 		this.resolution = resolution;
 	}
@@ -58,6 +60,14 @@ public class Monitor implements Serializable {
 
 	public void setBrand(String brand) {
 		this.brand = brand;
+	}
+	
+	public String getModel() {
+		return model;
+	}
+
+	public void setModel(String model) {
+		this.model = model;
 	}
 
 	public String getSize() {

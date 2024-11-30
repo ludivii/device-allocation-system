@@ -12,6 +12,7 @@ import com.luandias.device_allocation_system.entities.Address;
 import com.luandias.device_allocation_system.entities.Business;
 import com.luandias.device_allocation_system.entities.Client;
 import com.luandias.device_allocation_system.entities.Device;
+import com.luandias.device_allocation_system.entities.Monitor;
 import com.luandias.device_allocation_system.enums.Type;
 import com.luandias.device_allocation_system.repositories.AddressRepository;
 import com.luandias.device_allocation_system.repositories.AllocationRepository;
@@ -88,6 +89,16 @@ public class TestConfig implements CommandLineRunner {
 		Device device5 = new Device(null, 102555, Type.NOTEBOOK, "Lenovo", "Thinkpad E14", "14 polegadas", "Intel I5-10210U", "Adata 8GB DDR4 2666", "Patriot 240GB", "Intel® UHD Graphics for 10th Gen Intel® Processors");
 		
 		deviceRepository.saveAll(Arrays.asList(device1, device2, device3, device4, device5));
+		
+		monitorRepository.deleteAll();
+		
+		Monitor monitor1 = new Monitor(null, 103111, "DELL", "SE2222H", "21.5 polegadas", "Full HD");
+		Monitor monitor2 = new Monitor(null, 103222, "Samsung", "B1940W", "19 polegadas", "HD");
+		Monitor monitor3 = new Monitor(null, 103333, "Login", "P190VH", "19 polegadas", "HD");
+		Monitor monitor4 = new Monitor(null, 103444, "Ameko", "Amk195led", "19 polegadas", "HD");
+		Monitor monitor5 = new Monitor(null, 103555, "DELL", "SE2222H", "21.5 polegadas", "Full HD");
+		
+		monitorRepository.saveAll(Arrays.asList(monitor1, monitor2, monitor3, monitor4, monitor5));
 		
 		
 	}
