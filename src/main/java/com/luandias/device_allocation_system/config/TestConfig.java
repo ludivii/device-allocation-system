@@ -26,9 +26,6 @@ import com.luandias.device_allocation_system.repositories.DeviceRepository;
 import com.luandias.device_allocation_system.repositories.MonitorRepository;
 import com.luandias.device_allocation_system.repositories.StabilizerRepository;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
-
 @Configuration
 @Profile("test")
 public class TestConfig implements CommandLineRunner {
@@ -47,9 +44,6 @@ public class TestConfig implements CommandLineRunner {
 	private MonitorRepository monitorRepository;
 	@Autowired
 	private StabilizerRepository stabilizerRepository;
-	
-	@PersistenceContext
-	private EntityManager entityManager;
 
 	@Transactional
 	@Override
