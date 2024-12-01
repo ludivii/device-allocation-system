@@ -9,6 +9,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -30,13 +32,18 @@ public class Device implements Serializable {
 	private String ram;
 	private String ssd;
 	private String gpu;
+	private Character keyboardAndMouse;
+
+	@ManyToOne
+	@JoinColumn(name = "allocation_id")
+	private Allocation allocation;
 
 	public Device() {
 
 	}
 
-	public Device(Long id, Integer identification, Type type, String brand, String model, String size, String cpu, String ram,
-			String ssd, String gpu) {
+	public Device(Long id, Integer identification, Type type, String brand, String model, String size, String cpu,
+			String ram, String ssd, String gpu, Character keyboardAndMouse, Allocation allocation) {
 		this.id = id;
 		this.identification = identification;
 		this.type = type;
@@ -47,6 +54,8 @@ public class Device implements Serializable {
 		this.ram = ram;
 		this.ssd = ssd;
 		this.gpu = gpu;
+		this.keyboardAndMouse = keyboardAndMouse;
+		this.allocation = allocation;
 	}
 
 	public Long getId() {
@@ -80,7 +89,7 @@ public class Device implements Serializable {
 	public void setBrand(String brand) {
 		this.brand = brand;
 	}
-	
+
 	public String getModel() {
 		return model;
 	}
@@ -127,6 +136,22 @@ public class Device implements Serializable {
 
 	public void setGpu(String gpu) {
 		this.gpu = gpu;
+	}
+
+	public Character getKeyboardAndMouse() {
+		return keyboardAndMouse;
+	}
+
+	public void setKeyboardAndMouse(Character keyboardAndMouse) {
+		this.keyboardAndMouse = keyboardAndMouse;
+	}
+
+	public Allocation getAllocation() {
+		return allocation;
+	}
+
+	public void setAllocation(Allocation allocation) {
+		this.allocation = allocation;
 	}
 
 	@Override

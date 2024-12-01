@@ -7,6 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -25,17 +27,23 @@ public class Stabilizer implements Serializable {
 	private String voltage;
 	private Character bivolt;
 
+	@ManyToOne
+	@JoinColumn(name = "allocation_id")
+	private Allocation allocation;
+
 	public Stabilizer() {
 
 	}
 
-	public Stabilizer(Long id, Integer identification, String brand, String model, String voltage, Character bivolt) {
+	public Stabilizer(Long id, Integer identification, String brand, String model, String voltage, Character bivolt,
+			Allocation allocation) {
 		this.id = id;
 		this.identification = identification;
 		this.brand = brand;
 		this.model = model;
 		this.voltage = voltage;
 		this.bivolt = bivolt;
+		this.allocation = allocation;
 	}
 
 	public Long getId() {
@@ -69,7 +77,7 @@ public class Stabilizer implements Serializable {
 	public void setModel(String model) {
 		this.model = model;
 	}
-	
+
 	public String getVoltage() {
 		return voltage;
 	}
@@ -77,13 +85,21 @@ public class Stabilizer implements Serializable {
 	public void setVoltage(String voltage) {
 		this.voltage = voltage;
 	}
-	
+
 	public Character getBivolt() {
 		return bivolt;
 	}
 
 	public void setBivolt(Character bivolt) {
 		this.bivolt = bivolt;
+	}
+
+	public Allocation getAllocation() {
+		return allocation;
+	}
+
+	public void setAllocation(Allocation allocation) {
+		this.allocation = allocation;
 	}
 
 	@Override

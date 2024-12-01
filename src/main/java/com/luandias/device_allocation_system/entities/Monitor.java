@@ -7,6 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -25,17 +27,23 @@ public class Monitor implements Serializable {
 	private String size;
 	private String resolution;
 
+	@ManyToOne
+	@JoinColumn(name = "allocation_id")
+	private Allocation allocation;
+
 	public Monitor() {
 
 	}
 
-	public Monitor(Long id, Integer identification, String brand, String model, String size, String resolution) {
+	public Monitor(Long id, Integer identification, String brand, String model, String size, String resolution,
+			Allocation allocation) {
 		this.id = id;
 		this.identification = identification;
 		this.brand = brand;
 		this.model = model;
 		this.size = size;
 		this.resolution = resolution;
+		this.allocation = allocation;
 	}
 
 	public Long getId() {
@@ -61,7 +69,7 @@ public class Monitor implements Serializable {
 	public void setBrand(String brand) {
 		this.brand = brand;
 	}
-	
+
 	public String getModel() {
 		return model;
 	}
@@ -84,6 +92,14 @@ public class Monitor implements Serializable {
 
 	public void setResolution(String resolution) {
 		this.resolution = resolution;
+	}
+
+	public Allocation getAllocation() {
+		return allocation;
+	}
+
+	public void setAllocation(Allocation allocation) {
+		this.allocation = allocation;
 	}
 
 	@Override

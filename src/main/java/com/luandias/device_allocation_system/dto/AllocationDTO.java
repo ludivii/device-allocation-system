@@ -1,6 +1,7 @@
 package com.luandias.device_allocation_system.dto;
 
 import java.time.LocalDate;
+import java.util.Set;
 
 import com.luandias.device_allocation_system.entities.Allocation;
 import com.luandias.device_allocation_system.entities.Business;
@@ -12,13 +13,12 @@ import com.luandias.device_allocation_system.entities.Stabilizer;
 public class AllocationDTO {
 
 	private Long id;
-	private Character keyboardAndMouse;
-	private Device device;
-	private Monitor monitor;
-	private Stabilizer stabilizer;
+	private LocalDate expirationDate;
 	private Client client;
 	private Business business;
-	private LocalDate expirationDate;
+	private Set<Device> devices;
+	private Set<Monitor> monitors;
+	private Set<Stabilizer> stabilizers;
 
 	public AllocationDTO() {
 
@@ -26,13 +26,12 @@ public class AllocationDTO {
 
 	public AllocationDTO(Allocation obj) {
 		id = obj.getId();
-		keyboardAndMouse = obj.getKeyboardAndMouse();
-		device = obj.getDevice();
-		monitor = obj.getMonitor();
-		stabilizer = obj.getStabilizer();
+		expirationDate = obj.getExpirationDate();
 		client = obj.getClient();
 		business = obj.getBusiness();
-		expirationDate = obj.getExpirationDate();
+		devices = obj.getDevices();
+		monitors = obj.getMonitors();
+		stabilizers = obj.getStabilizers();
 	}
 
 	public Long getId() {
@@ -43,36 +42,12 @@ public class AllocationDTO {
 		this.id = id;
 	}
 
-	public Character getKeyboardAndMouse() {
-		return keyboardAndMouse;
+	public LocalDate getExpirationDate() {
+		return expirationDate;
 	}
 
-	public void setKeyboardAndMouse(Character keyboardAndMouse) {
-		this.keyboardAndMouse = keyboardAndMouse;
-	}
-
-	public Device getDevice() {
-		return device;
-	}
-
-	public void setDevice(Device device) {
-		this.device = device;
-	}
-
-	public Monitor getMonitor() {
-		return monitor;
-	}
-
-	public void setMonitor(Monitor monitor) {
-		this.monitor = monitor;
-	}
-
-	public Stabilizer getStabilizer() {
-		return stabilizer;
-	}
-
-	public void setStabilizer(Stabilizer stabilizer) {
-		this.stabilizer = stabilizer;
+	public void setExpirationDate(LocalDate expirationDate) {
+		this.expirationDate = expirationDate;
 	}
 
 	public Client getClient() {
@@ -91,11 +66,27 @@ public class AllocationDTO {
 		this.business = business;
 	}
 
-	public LocalDate getExpirationDate() {
-		return expirationDate;
+	public Set<Device> getDevice() {
+		return devices;
 	}
 
-	public void setExpirationDate(LocalDate expirationDate) {
-		this.expirationDate = expirationDate;
+	public void setDevice(Set<Device> device) {
+		this.devices = device;
+	}
+
+	public Set<Monitor> getMonitor() {
+		return monitors;
+	}
+
+	public void setMonitor(Set<Monitor> monitor) {
+		this.monitors = monitor;
+	}
+
+	public Set<Stabilizer> getStabilizer() {
+		return stabilizers;
+	}
+
+	public void setStabilizer(Set<Stabilizer> stabilizer) {
+		this.stabilizers = stabilizer;
 	}
 }

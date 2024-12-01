@@ -16,6 +16,7 @@ public class DeviceDTO {
 	private String ram;
 	private String ssd;
 	private String gpu;
+	private Character keyboardAndMouse;
 
 	public DeviceDTO() {
 
@@ -32,6 +33,7 @@ public class DeviceDTO {
 		ram = obj.getRam();
 		ssd = obj.getSsd();
 		gpu = obj.getGpu();
+		keyboardAndMouse = obj.getKeyboardAndMouse();
 	}
 
 	public Long getId() {
@@ -73,7 +75,7 @@ public class DeviceDTO {
 	public void setModel(String model) {
 		this.model = model;
 	}
-	
+
 	public String getSize() {
 		return size;
 	}
@@ -112,6 +114,14 @@ public class DeviceDTO {
 
 	public void setGpu(String gpu) {
 		this.gpu = gpu;
+	}
+
+	public Character getKeyboardAndMouse() {
+		return keyboardAndMouse;
+	}
+
+	public void setKeyboardAndMouse(Character keyboardAndMouse) {
+		this.keyboardAndMouse = keyboardAndMouse;
 	}
 
 }
