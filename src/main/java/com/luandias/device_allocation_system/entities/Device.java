@@ -3,6 +3,7 @@ package com.luandias.device_allocation_system.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.luandias.device_allocation_system.enums.Type;
 
 import jakarta.persistence.Entity;
@@ -36,6 +37,7 @@ public class Device implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name = "allocation_id")
+	@JsonBackReference
 	private Allocation allocation;
 
 	public Device() {

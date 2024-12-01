@@ -6,8 +6,10 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -32,13 +34,16 @@ public class Allocation implements Serializable {
 	@OneToOne
 	private Business business;
 
-	@OneToMany(mappedBy = "allocation", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "allocation", cascade = CascadeType.ALL, orphanRemoval = true)
+	@JsonManagedReference
 	private Set<Device> devices = new HashSet<>();
 
-	@OneToMany(mappedBy = "allocation", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "allocation", cascade = CascadeType.ALL, orphanRemoval = true)
+	@JsonManagedReference
 	private Set<Monitor> monitors = new HashSet<>();
 
-	@OneToMany(mappedBy = "allocation", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "allocation", cascade = CascadeType.ALL, orphanRemoval = true)
+	@JsonManagedReference
 	private Set<Stabilizer> stabilizers = new HashSet<>();
 
 	public Allocation() {
@@ -111,6 +116,90 @@ public class Allocation implements Serializable {
 			return false;
 		Allocation other = (Allocation) obj;
 		return Objects.equals(id, other.id);
+	}
+
+	// Method to add a device
+	public void addDevice(Device device) {
+		this.devices.add(device);
+		device.setAllocation(this);
+	}
+
+	// Method to add various devices
+	public void addDevice(Set<Device> devices) {
+		devices.forEach(device -> {
+			this.devices.add(device);
+			device.setAllocation(this);
+		});
+	}
+
+	// Method to remove a device
+	public void removeDevice(Device device) {
+		devices.remove(device);
+		device.setAllocation(null);
+	}
+
+	// Method to remove various devices
+	public void removeDevice(Set<Device> devices) {
+		devices.forEach(device -> {
+			this.devices.remove(device);
+			device.setAllocation(null);
+		});
+	}
+
+	// Method to add a monitor
+	public void addMonitor(Monitor monitor) {
+		monitors.add(monitor);
+		monitor.setAllocation(this);
+	}
+
+	// Method to add various monitors
+	public void addMonitor(Set<Monitor> monitors) {
+		monitors.forEach(monitor -> {
+			this.monitors.add(monitor);
+			monitor.setAllocation(this);
+		});
+	}
+
+	// Method to remove a monitor
+	public void removeMonitor(Monitor monitor) {
+		monitors.remove(monitor);
+		monitor.setAllocation(null);
+	}
+
+	// Method to remove various monitors
+	public void removeMonitor(Set<Monitor> monitors) {
+		monitors.forEach(monitor -> {
+			this.monitors.remove(monitor);
+			monitor.setAllocation(null);
+		});
+	}
+
+	// Method to add a stabilizer
+	public void addStabilizer(Stabilizer stabilizer) {
+		stabilizers.add(stabilizer);
+		stabilizer.setAllocation(this);
+	}
+
+	// Method to add various stabilizers
+	public void addStabilizer(Set<Stabilizer> stabilizers) {
+		stabilizers.forEach(stabilizer -> {
+			this.stabilizers.add(stabilizer);
+			stabilizer.setAllocation(this);
+		});
+	}
+
+	// Method to remove a stabilizer
+	public void removeStabilizer(Stabilizer stabilizer) {
+		stabilizers.remove(stabilizer);
+		stabilizer.setAllocation(null);
+	}
+
+	// Method to remove various stabilizers
+	public void removeStabilizer(Set<Stabilizer> stabilizers) {
+		stabilizers.forEach(stabilizer -> {
+			this.stabilizers.remove(stabilizer);
+			stabilizer.setAllocation(null);
+		});
 	}
 
 }

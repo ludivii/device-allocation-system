@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.luandias.device_allocation_system.entities.Address;
 import com.luandias.device_allocation_system.entities.Allocation;
@@ -24,6 +25,9 @@ import com.luandias.device_allocation_system.repositories.ClientRepository;
 import com.luandias.device_allocation_system.repositories.DeviceRepository;
 import com.luandias.device_allocation_system.repositories.MonitorRepository;
 import com.luandias.device_allocation_system.repositories.StabilizerRepository;
+
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 
 @Configuration
 @Profile("test")
@@ -43,11 +47,16 @@ public class TestConfig implements CommandLineRunner {
 	private MonitorRepository monitorRepository;
 	@Autowired
 	private StabilizerRepository stabilizerRepository;
+	
+	@PersistenceContext
+	private EntityManager entityManager;
 
+	@Transactional
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO: Seed all tables
-
+		
+		
 		addressRepository.deleteAll();
 
 		Address address1 = new Address(null, "Rua Gonçalves Cezimbra", "Pituaçu", "Bahia", "Salvador", "41741-155");
@@ -120,35 +129,36 @@ public class TestConfig implements CommandLineRunner {
 		
 		Allocation allocation1 = new Allocation(null, LocalDate.of(2026, 12, 10), client1, business1);
 		
-		allocation1.getDevices().addAll(Set.of(device1, device3));
-		allocation1.getMonitors().addAll(Set.of(monitor1, monitor5));
-		allocation1.getStabilizers().addAll(Set.of(stabilizer1, stabilizer2));
+		allocation1.addDevice(Set.of(device1, device3));
+		allocation1.addMonitor(Set.of(monitor1, monitor5));
+		allocation1.addStabilizer(Set.of(stabilizer1, stabilizer2));
 		
 		Allocation allocation2 = new Allocation(null, LocalDate.of(2025, 07, 30), client2, business2);
 		
-		allocation2.getDevices().add(device2);
+		allocation2.addDevice(device2);
 		
-		Allocation allocation3 = new Allocation(null, LocalDate.of(2025, 04, 30), client3, business3);//, null,	Arrays.asList(monitor2, monitor3), null);
+		Allocation allocation3 = new Allocation(null, LocalDate.of(2025, 04, 30), client3, business3);
 		
-		allocation3.getMonitors().addAll(Set.of(monitor2, monitor3));
+		allocation3.addMonitor(Set.of(monitor2, monitor3));
 		
-		Allocation allocation4 = new Allocation(null, LocalDate.of(2027, 02, 20), client4, null);//,Arrays.asList(device6, device7), Arrays.asList(monitor4, monitor6),	Arrays.asList(stabilizer4, stabilizer5));
+		Allocation allocation4 = new Allocation(null, LocalDate.of(2027, 02, 20), client4, null);
 		
-		allocation4.getDevices().addAll(Set.of(device6, device7));
-		allocation4.getMonitors().addAll(Set.of(monitor4, monitor6));
-		allocation4.getStabilizers().addAll(Set.of(stabilizer4, stabilizer5));
+		allocation4.addDevice(Set.of(device6, device7));
+		allocation4.addMonitor(Set.of(monitor4, monitor6));
+		allocation4.addStabilizer(Set.of(stabilizer4, stabilizer5));
 		
-		Allocation allocation5 = new Allocation(null, LocalDate.of(2026, 06, 05), client5, business5);//,Arrays.asList(device4), null, null);
+		Allocation allocation5 = new Allocation(null, LocalDate.of(2026, 06, 05), client5, business5);
 		
-		allocation5.getDevices().add(device4);
+		allocation5.addDevice(device4);
 		
-		Allocation allocation6 = new Allocation(null, LocalDate.of(2026, 04, 15), null, business4);//Arrays.asList(device5), null, Arrays.asList(stabilizer3));
+		Allocation allocation6 = new Allocation(null, LocalDate.of(2026, 04, 15), null, business4);
 		
-		allocation6.getDevices().add(device5);
-		allocation6.getStabilizers().add(stabilizer3);
+		allocation6.addDevice(device5);
+		allocation6.addStabilizer(stabilizer3);
 		
-		allocationRepository.saveAll(Arrays.asList(allocation1, allocation2, allocation3, allocation4, allocation5, allocation6));//, allocation2, allocation3, allocation4, allocation5, allocation6));
+		allocationRepository.saveAll(Arrays.asList(allocation1, allocation2, allocation3, allocation4, allocation5, allocation6));
 
 	}
+
 
 }
