@@ -1,6 +1,7 @@
 package com.luandias.device_allocation_system.servicies;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,13 @@ public class DeviceService {
 	public List<DeviceDTO> findAll(){
 		List<Device> result = deviceRepository.findAll();
 		List<DeviceDTO> dto = result.stream().map(x -> new DeviceDTO(x)).toList();
+		return dto;
+	}
+	
+	@Transactional(readOnly = true)
+	public Optional<List<DeviceDTO>> findById(long id) {
+		Optional<Device> obj = deviceRepository.findById(id);
+		Optional<List<DeviceDTO>> dto = Optional.of(obj.stream().map(x -> new DeviceDTO(x)).toList());
 		return dto;
 	}
 }

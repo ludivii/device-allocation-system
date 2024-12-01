@@ -1,6 +1,7 @@
 package com.luandias.device_allocation_system.servicies;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,13 @@ public class StabilizerService {
 	public List<StabilizerDTO> findAll(){
 		List<Stabilizer> result = stabilizerRepository.findAll();
 		List<StabilizerDTO> dto = result.stream().map(x -> new StabilizerDTO(x)).toList();
+		return dto;
+	}
+	
+	@Transactional(readOnly = true)
+	public Optional<List<StabilizerDTO>> findById(long id) {
+		Optional<Stabilizer> obj = stabilizerRepository.findById(id);
+		Optional<List<StabilizerDTO>> dto = Optional.of(obj.stream().map(x -> new StabilizerDTO(x)).toList());
 		return dto;
 	}
 }
