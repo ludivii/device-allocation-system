@@ -25,9 +25,9 @@ public class AllocationService {
 	}
 	
 	@Transactional(readOnly = true)
-	public Optional<Allocation> findById(long id) {
+	public Optional<List<AllocationDTO>> findById(long id) {
 		Optional<Allocation> obj = allocationRepository.findById(id);
-		Optional<Allocation> dto = obj;
+		Optional<List<AllocationDTO>> dto = Optional.of(obj.stream().map(x -> new AllocationDTO(x)).toList());
 		return dto;
 	}
 	

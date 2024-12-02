@@ -1,6 +1,7 @@
 package com.luandias.device_allocation_system.servicies;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,4 +24,10 @@ public class ClientService {
 		return dto;
 	}
 	
+	@Transactional(readOnly = true)
+	public Optional<List<ClientDTO>> findById(long id) {
+		Optional<Client> obj = clientRepository.findById(id);
+		Optional<List<ClientDTO>> dto = Optional.of(obj.stream().map(x -> new ClientDTO(x)).toList());
+		return dto;
+	}
 }
