@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -27,7 +28,7 @@ public class Client implements Serializable {
 	private Character gender;
 	private String phone;
 
-	@OneToOne
+	@OneToOne (cascade = CascadeType.REMOVE)
 	private Address address;
 
 	public Client() {

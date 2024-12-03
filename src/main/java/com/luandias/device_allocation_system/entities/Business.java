@@ -3,6 +3,7 @@ package com.luandias.device_allocation_system.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -25,7 +26,7 @@ public class Business implements Serializable {
 	private String phone;
 	private String email;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.REMOVE)
 	private Address address;
 
 	public Business() {
